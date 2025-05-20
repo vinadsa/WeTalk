@@ -1,0 +1,40 @@
+2025-05-20 12:10:19 [SERVER] Server dimulai.
+2025-05-20 12:10:30 [CONNECTION] vinadsa (/127.0.0.1:59339) telah bergabung.
+2025-05-20 12:10:30 [BROADCAST] SYSTEM: vinadsa telah bergabung dengan chat!
+2025-05-20 12:10:42 [CONNECTION] azkamedan (/127.0.0.1:59342) telah bergabung.
+2025-05-20 12:10:42 [BROADCAST] SYSTEM: azkamedan telah bergabung dengan chat!
+2025-05-20 12:10:49 [BROADCAST] [azkamedan]: halo
+2025-05-20 12:10:58 [BROADCAST] [vinadsa]: halo juga azka
+2025-05-20 12:11:26 [CONNECTION] kikiganteng (/127.0.0.1:59351) telah bergabung.
+2025-05-20 12:11:26 [BROADCAST] SYSTEM: kikiganteng telah bergabung dengan chat!
+2025-05-20 12:11:37 [BROADCAST] [kikiganteng]: woiii
+2025-05-20 12:13:02 [BROADCAST] [vinadsa]: asu we
+2025-05-20 12:13:26 [CONNECTION] gilang lombok (/127.0.0.1:59365) telah bergabung.
+2025-05-20 12:13:26 [BROADCAST] SYSTEM: gilang lombok telah bergabung dengan chat!
+2025-05-20 12:13:34 [BROADCAST] [gilang lombok]: wakakawkakw
+2025-05-20 12:16:19 [CONNECTION] vinadsa (/127.0.0.1:59339) telah meninggalkan chat.
+2025-05-20 12:16:19 [BROADCAST] SYSTEM: vinadsa telah meninggalkan chat.
+2025-05-20 12:16:22 [CONNECTION] kikiganteng (/127.0.0.1:59351) telah meninggalkan chat.
+2025-05-20 12:16:22 [BROADCAST] SYSTEM: kikiganteng telah meninggalkan chat.
+2025-05-20 12:16:26 [CONNECTION] gilang lombok (/127.0.0.1:59365) telah meninggalkan chat.
+2025-05-20 12:16:26 [BROADCAST] SYSTEM: gilang lombok telah meninggalkan chat.
+2025-05-20 12:16:27 [CONNECTION] azkamedan (/127.0.0.1:59342) telah meninggalkan chat.
+2025-05-20 12:16:27 [BROADCAST] SYSTEM: azkamedan telah meninggalkan chat.
+2025-05-20 12:34:52 [SERVER] Server dimulai.
+2025-05-20 12:35:22 [CONNECTION] vinadsa (/127.0.0.1:59483) telah bergabung.
+2025-05-20 12:35:22 [BROADCAST] SYSTEM: vinadsa telah bergabung dengan chat!
+2025-05-20 12:35:42 [CONNECTION] KIKI GTG (/127.0.0.1:59488) telah bergabung.
+2025-05-20 12:35:42 [BROADCAST] SYSTEM: KIKI GTG telah bergabung dengan chat!
+2025-05-20 12:35:58 [CONNECTION] gilanglombok (/127.0.0.1:59490) telah bergabung.
+2025-05-20 12:35:58 [BROADCAST] SYSTEM: gilanglombok telah bergabung dengan chat!
+2025-05-20 12:36:14 [CONNECTION] azkamedan (/127.0.0.1:59491) telah bergabung.
+2025-05-20 12:36:14 [BROADCAST] SYSTEM: azkamedan telah bergabung dengan chat!
+2025-05-20 12:36:18 [BROADCAST] [azkamedan]: halo ges
+2025-05-20 12:36:30 [BROADCAST] [gilanglombok]: cok
+2025-05-20 12:36:40 [BROADCAST] [KIKI GTG]: hai sayang
+2025-05-20 12:37:31 [BROADCAST] [vinadsa]: haii
+2025-05-20 12:37:45 [BROADCAST] [KIKI GTG]: p
+2025-05-20 12:37:49 [BROADCAST] [azkamedan]: heh
+2025-05-20 12:37:50 [BROADCAST] [azkamedan]: cok
+2025-05-20 12:37:54 [BROADCAST] [azkamedan]: apa kabar
+2025-05-20 12:41:11 [BROADCAST] [gilanglombok]: WeTalk
