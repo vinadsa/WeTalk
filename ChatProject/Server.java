@@ -1,6 +1,10 @@
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Vector;
+
 public class Server {
     private static final int PORT = 1234;
     static Vector<ClientHandler> clients = new Vector<>();
@@ -24,8 +28,8 @@ public class Server {
             while (true) {
                 Socket socket = serverSocket.accept();
                 ClientHandler clientThread = new ClientHandler(socket);
-                clientThread.start();
-                clientThread.start();
+                clientThread.start(); // Cukup panggil sekali di sini
+                // clientThread.start(); // HAPUS BARIS INI!
             }
         } catch (IOException e) {
             e.printStackTrace();

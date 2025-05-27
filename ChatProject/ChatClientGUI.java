@@ -27,7 +27,6 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.font.TextAttribute;
 import java.util.Map;
 import java.util.HashMap;
-import javax.swing.Timer;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -40,6 +39,7 @@ public class ChatClientGUI extends JFrame {
     private BufferedReader in;
     private Socket socket;
     private String username;
+    private String userPassword;
     private boolean isConnected = false;
     private JLabel statusLabel;
     private DatabaseAuthenticator dbAuth;
@@ -376,6 +376,7 @@ public class ChatClientGUI extends JFrame {
                 
                 // Send username to server
                 out.println(this.username); // Kirim username ke server
+                out.println(this.userPassword); // Kirim password ke server
                 
                 // Update UI on EDT
                 SwingUtilities.invokeLater(() -> {
@@ -811,6 +812,7 @@ public class ChatClientGUI extends JFrame {
                     // Login successful
                     this.currentUser = dbAuth.getUserByUsername(username);
                     this.username = username; // Set the username for the chat
+                    this.userPassword = password; 
                     return true;
                 } else {
                     // Login failed

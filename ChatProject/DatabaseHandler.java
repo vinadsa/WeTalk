@@ -8,7 +8,7 @@ public class DatabaseHandler {
     // Update these connection details for your MySQL database
     private static final String DB_URL = "jdbc:mysql://localhost:3306/we_talk";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "wirapati123"; // Replace with your actual MySQL root password
+    private static final String DB_PASSWORD = "wirapati123";
     
     private static Connection connection;
     

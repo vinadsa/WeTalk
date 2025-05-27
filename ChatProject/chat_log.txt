@@ -86,3 +86,21 @@
 2025-05-21 09:11:52 [BROADCAST] SYSTEM: kevinganteng telah meninggalkan chat.
 2025-05-21 09:11:53 [CONNECTION] vinokamsia (/127.0.0.1:54594) telah meninggalkan chat.
 2025-05-21 09:11:53 [BROADCAST] SYSTEM: vinokamsia telah meninggalkan chat.
+2025-05-27 15:09:14 [SERVER] Server dimulai.
+2025-05-27 15:09:36 [SERVER] Server dihentikan.
+2025-05-27 15:29:17 [SERVER] Server dimulai.
+2025-05-27 15:29:23 [SERVER] Server dihentikan.
+2025-05-27 15:31:29 [SERVER] Server dimulai.
+2025-05-27 15:31:36 [SERVER] Server dihentikan.
+2025-05-27 15:33:53 [SERVER] Server dimulai.
+2025-05-27 15:34:19 [SERVER] Server dihentikan.
+2025-05-27 15:40:15 [SERVER] Server dimulai.
+2025-05-27 15:40:29 [SERVER] Server dihentikan.
+2025-05-27 15:46:31 [SERVER] Server dimulai.
+2025-05-27 15:57:07 [SERVER] Server dimulai.
+2025-05-27 15:57:19 [CONNECTION] gilang (/127.0.0.1:55646) telah bergabung.
+2025-05-27 15:57:19 [BROADCAST] SYSTEM: gilang telah bergabung dengan chat!
+2025-05-27 15:57:21 [BROADCAST] [gilang]: test
+2025-05-27 15:57:23 [BROADCAST] [gilang]: anjay
+2025-05-27 15:58:13 [CONNECTION] gilang (/127.0.0.1:55646) telah meninggalkan chat.
+2025-05-27 15:58:13 [BROADCAST] SYSTEM: gilang telah meninggalkan chat.
