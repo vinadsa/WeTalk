@@ -38,3 +38,51 @@
 2025-05-20 12:37:50 [BROADCAST] [azkamedan]: cok
 2025-05-20 12:37:54 [BROADCAST] [azkamedan]: apa kabar
 2025-05-20 12:41:11 [BROADCAST] [gilanglombok]: WeTalk
+2025-05-21 07:29:28 [SERVER] Server dimulai.
+2025-05-21 07:31:19 [SERVER] Server dimulai.
+2025-05-21 07:32:09 [CONNECTION] vinadsa (/127.0.0.1:49962) telah bergabung.
+2025-05-21 07:32:09 [BROADCAST] SYSTEM: vinadsa telah bergabung dengan chat!
+2025-05-21 07:32:23 [CONNECTION] hadi (/127.0.0.1:49964) telah bergabung.
+2025-05-21 07:32:23 [BROADCAST] SYSTEM: hadi telah bergabung dengan chat!
+2025-05-21 07:32:27 [BROADCAST] [hadi]: halo
+2025-05-21 07:32:32 [BROADCAST] [vinadsa]: cok
+2025-05-21 07:32:36 [BROADCAST] [vinadsa]: hahaha
+2025-05-21 07:32:37 [BROADCAST] [vinadsa]: oi
+2025-05-21 07:32:58 [CONNECTION] gilanglombok (/127.0.0.1:49970) telah bergabung.
+2025-05-21 07:32:58 [BROADCAST] SYSTEM: gilanglombok telah bergabung dengan chat!
+2025-05-21 07:33:22 [CONNECTION] wewewe (/127.0.0.1:49973) telah bergabung.
+2025-05-21 07:33:22 [BROADCAST] SYSTEM: wewewe telah bergabung dengan chat!
+2025-05-21 07:33:33 [BROADCAST] [vinadsa]: oi
+2025-05-21 07:33:38 [BROADCAST] [vinadsa]: halo saya kevin
+2025-05-21 07:33:41 [BROADCAST] [hadi]: siapa kamu
+2025-05-21 07:33:56 [BROADCAST] [wewewe]: hihihi
+2025-05-21 07:34:00 [CONNECTION] gilanglombok (/127.0.0.1:49970) telah meninggalkan chat.
+2025-05-21 07:34:00 [BROADCAST] SYSTEM: gilanglombok telah meninggalkan chat.
+2025-05-21 07:34:02 [CONNECTION] wewewe (/127.0.0.1:49973) telah meninggalkan chat.
+2025-05-21 07:34:02 [BROADCAST] SYSTEM: wewewe telah meninggalkan chat.
+2025-05-21 07:34:03 [CONNECTION] vinadsa (/127.0.0.1:49962) telah meninggalkan chat.
+2025-05-21 07:34:03 [BROADCAST] SYSTEM: vinadsa telah meninggalkan chat.
+2025-05-21 07:34:09 [CONNECTION] hadi (/127.0.0.1:49964) telah meninggalkan chat.
+2025-05-21 07:34:09 [BROADCAST] SYSTEM: hadi telah meninggalkan chat.
+2025-05-21 09:05:04 [SERVER] Server dimulai.
+2025-05-21 09:09:05 [CONNECTION] kevinganteng (/127.0.0.1:54580) telah bergabung.
+2025-05-21 09:09:05 [BROADCAST] SYSTEM: kevinganteng telah bergabung dengan chat!
+2025-05-21 09:09:21 [CONNECTION] juliusjingliu (/127.0.0.1:54585) telah bergabung.
+2025-05-21 09:09:21 [BROADCAST] SYSTEM: juliusjingliu telah bergabung dengan chat!
+2025-05-21 09:09:34 [CONNECTION] imroncirebon (/127.0.0.1:54592) telah bergabung.
+2025-05-21 09:09:34 [BROADCAST] SYSTEM: imroncirebon telah bergabung dengan chat!
+2025-05-21 09:09:47 [CONNECTION] vinokamsia (/127.0.0.1:54594) telah bergabung.
+2025-05-21 09:09:47 [BROADCAST] SYSTEM: vinokamsia telah bergabung dengan chat!
+2025-05-21 09:09:58 [BROADCAST] [vinokamsia]: halo ges
+2025-05-21 09:10:05 [BROADCAST] [vinokamsia]: namaku vino
+2025-05-21 09:10:09 [BROADCAST] [kevinganteng]: halo pin
+2025-05-21 09:10:16 [BROADCAST] [juliusjingliu]: aku penggemar anime
+2025-05-21 09:10:42 [BROADCAST] [imroncirebon]: aku dari cirebon
+2025-05-21 09:11:42 [CONNECTION] imroncirebon (/127.0.0.1:54592) telah meninggalkan chat.
+2025-05-21 09:11:42 [BROADCAST] SYSTEM: imroncirebon telah meninggalkan chat.
+2025-05-21 09:11:50 [CONNECTION] juliusjingliu (/127.0.0.1:54585) telah meninggalkan chat.
+2025-05-21 09:11:50 [BROADCAST] SYSTEM: juliusjingliu telah meninggalkan chat.
+2025-05-21 09:11:52 [CONNECTION] kevinganteng (/127.0.0.1:54580) telah meninggalkan chat.
+2025-05-21 09:11:52 [BROADCAST] SYSTEM: kevinganteng telah meninggalkan chat.
+2025-05-21 09:11:53 [CONNECTION] vinokamsia (/127.0.0.1:54594) telah meninggalkan chat.
+2025-05-21 09:11:53 [BROADCAST] SYSTEM: vinokamsia telah meninggalkan chat.
