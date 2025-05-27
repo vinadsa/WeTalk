@@ -1,8 +1,8 @@
 import java.io.*;
 import java.net.*;
-import java.util.*;
+import java.sql.SQLException;
 
-class ClientHandler extends Thread {
+public class ClientHandler extends Thread {
     private Socket socket;
     private BufferedReader in;
     private PrintWriter out;
@@ -14,29 +14,49 @@ class ClientHandler extends Thread {
 
     public void run() {
         try {
+            // Initialize input and output streams
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
-
-            this.username = in.readLine(); // Klien mengirim username sebagai pesan pertama
-            if (this.username == null || this.username.trim().isEmpty()) {
-                System.out.println("Klien (" + socket.getRemoteSocketAddress() + ") tidak mengirim username, koneksi ditutup.");
-                // Tidak perlu log di sini karena Server.addClient tidak akan dipanggil
-                return; // Tutup koneksi jika tidak ada username
+            
+            // Read username and password
+            this.username = in.readLine();
+            String password = in.readLine();
+            
+            // Validate input
+            if (username == null || username.trim().isEmpty() || password == null) {
+                out.println("ERROR: Username dan password diperlukan");
+                System.out.println("Klien (" + socket.getRemoteSocketAddress() + ") tidak mengirim username/password, koneksi ditutup.");
+                return;
             }
-            // Daftarkan klien ke server SETELAH username diterima
-            Server.addClient(this);
-            // Pesan bergabung akan disiarkan oleh Server.addClient ke semua, termasuk yang baru bergabung
-
-            String clientMessage;
-            while ((clientMessage = in.readLine()) != null) {
-                if (clientMessage.equalsIgnoreCase("/exit")) {
-                    break;
+            
+            // Authenticate user with database
+            try {
+                if (DatabaseHandler.validateLogin(username, password)) {
+                    // Login successful
+                    out.println("LOGIN_SUCCESS");
+                    Server.addClient(this);
+                    
+                    // Handle chat messages
+                    String clientMessage;
+                    while ((clientMessage = in.readLine()) != null) {
+                        if (clientMessage.equalsIgnoreCase("/exit")) {
+                            break;
+                        }
+                        String formattedMessage = "[" + username + "]: " + clientMessage;
+                        System.out.println("Pesan dari " + this.username + " (" + socket.getRemoteSocketAddress() + "): " + clientMessage);
+                        Server.broadcastMessage(formattedMessage, this, false);
+                    }
+                } else {
+                    // Login failed
+                    out.println("ERROR: Username atau password salah");
+                    System.out.println("Klien (" + socket.getRemoteSocketAddress() + ") gagal login dengan username: " + this.username);
+                    return;
                 }
-                // Format pesan yang akan dibroadcast: [Username]: Pesan
-                String formattedMessage = "[" + this.username + "]: " + clientMessage;
-                System.out.println("Pesan dari " + this.username + " (" + socket.getRemoteSocketAddress() + "): " + clientMessage);
-                // Server akan menangani logging dan broadcasting ke semua klien
-                Server.broadcastMessage(formattedMessage, this, false); // false karena ini pesan pengguna
+            } catch (SQLException e) {
+                out.println("ERROR: Database error");
+                System.err.println("Database error during login: " + e.getMessage());
+                e.printStackTrace();
+                return;
             }
         } catch (IOException e) {
             if (this.username != null) {

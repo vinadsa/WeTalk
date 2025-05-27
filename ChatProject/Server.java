@@ -1,15 +1,22 @@
 import java.io.*;
 import java.net.*;
 import java.util.*;
-
 public class Server {
     private static final int PORT = 1234;
     static Vector<ClientHandler> clients = new Vector<>();
-    private static final String LOG_FILE_PATH = "c:\\CODING\\Proyek_PBO\\ChatProject\\chat_log.txt";
+    private static final String LOG_FILE_PATH = "chat_log.txt";
     private static PrintWriter logWriter;
 
     public static void main(String[] args) {
-        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+        try {
+            // Test database connection first
+            if (!DatabaseHandler.testConnection()) {
+                System.err.println("Failed to connect to database. Please check your database configuration.");
+                return;
+            }
+            
+            // Start server socket
+            ServerSocket serverSocket = new ServerSocket(PORT);
             System.out.println("Server berjalan di port " + PORT + " menunggu koneksi...");
             logWriter = new PrintWriter(new FileWriter(LOG_FILE_PATH, true), true); // true untuk append mode, true untuk autoFlush
             log("SERVER", "Server dimulai.");
@@ -18,9 +25,9 @@ public class Server {
                 Socket socket = serverSocket.accept();
                 ClientHandler clientThread = new ClientHandler(socket);
                 clientThread.start();
+                clientThread.start();
             }
         } catch (IOException e) {
-            System.err.println("Error pada server utama: " + e.getMessage());
             e.printStackTrace();
             log("SERVER_ERROR", "Server utama gagal: " + e.getMessage());
         } finally {
@@ -28,6 +35,7 @@ public class Server {
                 log("SERVER", "Server dihentikan.");
                 logWriter.close();
             }
+            DatabaseHandler.close();
         }
     }
 

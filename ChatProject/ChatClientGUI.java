@@ -9,6 +9,13 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.net.ConnectException;
+import java.sql.SQLException;
+
+// Import model and controller classes
+import com.chat.client.model.ChatClientModel;
+import com.chat.client.model.DatabaseAuthenticator;
+import com.chat.client.model.User;
+import com.chat.client.controller.ChatClientController;
 // Tambahkan import untuk styling teks
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -35,6 +42,10 @@ public class ChatClientGUI extends JFrame {
     private String username;
     private boolean isConnected = false;
     private JLabel statusLabel;
+    private DatabaseAuthenticator dbAuth;
+    private User currentUser;
+    private ChatClientController controller;
+    private ChatClientModel model;
     // Color scheme for the application
     private static final Color PRIMARY_COLOR = new Color(100, 149, 237); // Cornflower blue
     private static final Color SECONDARY_COLOR = new Color(240, 248, 255); // Alice blue
@@ -99,7 +110,7 @@ public class ChatClientGUI extends JFrame {
     }
     
     public ChatClientGUI() {
-        super("Chat Klien");
+        super("WeTalk Chat Client");
         
         // Set the look and feel to system look and feel for better appearance
         try {
@@ -108,12 +119,21 @@ public class ChatClientGUI extends JFrame {
             e.printStackTrace();
         }
         
-        this.username = JOptionPane.showInputDialog(this, "Masukkan username Anda:", "Username", JOptionPane.PLAIN_MESSAGE);
-        if (this.username == null || this.username.trim().isEmpty()) {
-            this.username = "Guest" + (int)(Math.random() * 1000);
-            JOptionPane.showMessageDialog(this, "Username tidak dimasukkan. Menggunakan default: " + this.username, "Info Username", JOptionPane.INFORMATION_MESSAGE);
+        // Initialize model and controller
+        this.model = new ChatClientModel();
+        this.controller = new ChatClientController(model);
+        
+        // Initialize database authenticator
+        this.dbAuth = DatabaseAuthenticator.getInstance();
+        
+        // Show authentication dialog first, before initializing the UI
+        if (!authenticateUser()) {
+            // If authentication fails or is cancelled, exit the application
+            System.exit(0);
         }
-        setTitle("Chat Klien - " + this.username);
+        
+        // Set title with username after successful authentication
+        setTitle("WeTalk Chat Client - " + this.username);
 
         // Setup UI dengan JTextPane
         messagePane = new JTextPane();
@@ -292,6 +312,13 @@ public class ChatClientGUI extends JFrame {
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                 // Clean up resources before exit
                 cleanupConnection();
+                
+                // Close database connection
+                if (dbAuth != null) {
+                    dbAuth.close();
+                    System.out.println("Database connection closed.");
+                }
+                
                 dispose();
                 System.exit(0);
             }
@@ -687,6 +714,203 @@ public class ChatClientGUI extends JFrame {
                 }
             }
         }
+    }
+
+    /**
+     * Handles user authentication (login/registration)
+     * 
+     * @return true if authentication was successful, false otherwise
+     */
+    private boolean authenticateUser() {
+        try {
+            // Test database connection first
+            if (!dbAuth.testConnection()) {
+                JOptionPane.showMessageDialog(this, 
+                    "Failed to connect to database. Please check your database configuration.",
+                    "Database Error", 
+                    JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+            
+            // Create users table if it doesn't exist
+            dbAuth.createUsersTableIfNotExists();
+            
+            // Show login/registration dialog
+            return showAuthDialog();
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this,
+                "Database error: " + e.getMessage(),
+                "Database Error",
+                JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    /**
+     * Show authentication dialog with login and registration options
+     * 
+     * @return true if authentication succeeded, false otherwise
+     */
+    private boolean showAuthDialog() {
+        // Create option buttons
+        String[] options = {"Login", "Register", "Cancel"};
+        
+        int choice = JOptionPane.showOptionDialog(this,
+            "Welcome to WeTalk Chat. Please select an option:",
+            "WeTalk Authentication",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            options,
+            options[0]);
+            
+        switch (choice) {
+            case 0: // Login
+                return showLoginDialog();
+            case 1: // Register
+                return showRegistrationDialog();
+            default: // Cancel or closed
+                return false;
+        }
+    }
+    
+    /**
+     * Show login dialog and authenticate user
+     * 
+     * @return true if login succeeded, false otherwise
+     */
+    private boolean showLoginDialog() {
+        JPanel panel = new JPanel(new GridLayout(2, 2, 5, 5));
+        JTextField usernameField = new JTextField(15);
+        JPasswordField passwordField = new JPasswordField(15);
+        
+        panel.add(new JLabel("Username:"));
+        panel.add(usernameField);
+        panel.add(new JLabel("Password:"));
+        panel.add(passwordField);
+        
+        int result = JOptionPane.showConfirmDialog(this, panel, "Login", 
+            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            
+        if (result == JOptionPane.OK_OPTION) {
+            String username = usernameField.getText();
+            String password = new String(passwordField.getPassword());
+            
+            if (username.isEmpty() || password.isEmpty()) {
+                JOptionPane.showMessageDialog(this,
+                    "Username and password cannot be empty",
+                    "Login Error",
+                    JOptionPane.ERROR_MESSAGE);
+                return showLoginDialog(); // Show dialog again
+            }
+            
+            try {
+                if (dbAuth.validateUser(username, password)) {
+                    // Login successful
+                    this.currentUser = dbAuth.getUserByUsername(username);
+                    this.username = username; // Set the username for the chat
+                    return true;
+                } else {
+                    // Login failed
+                    JOptionPane.showMessageDialog(this,
+                        "Invalid username or password",
+                        "Login Error",
+                        JOptionPane.ERROR_MESSAGE);
+                    return showLoginDialog(); // Show dialog again
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(this,
+                    "Database error: " + e.getMessage(),
+                    "Database Error",
+                    JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        
+        return false; // Cancelled
+    }
+    
+    /**
+     * Show registration dialog and register new user
+     * 
+     * @return true if registration succeeded, false otherwise
+     */
+    private boolean showRegistrationDialog() {
+        JPanel panel = new JPanel(new GridLayout(3, 2, 5, 5));
+        JTextField usernameField = new JTextField(15);
+        JPasswordField passwordField = new JPasswordField(15);
+        JPasswordField confirmPasswordField = new JPasswordField(15);
+        
+        panel.add(new JLabel("Username:"));
+        panel.add(usernameField);
+        panel.add(new JLabel("Password:"));
+        panel.add(passwordField);
+        panel.add(new JLabel("Confirm Password:"));
+        panel.add(confirmPasswordField);
+        
+        int result = JOptionPane.showConfirmDialog(this, panel, "Register", 
+            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            
+        if (result == JOptionPane.OK_OPTION) {
+            String username = usernameField.getText();
+            String password = new String(passwordField.getPassword());
+            String confirmPassword = new String(confirmPasswordField.getPassword());
+            
+            // Validate input
+            if (username.isEmpty() || password.isEmpty()) {
+                JOptionPane.showMessageDialog(this,
+                    "Username and password cannot be empty",
+                    "Registration Error",
+                    JOptionPane.ERROR_MESSAGE);
+                return showRegistrationDialog(); // Show dialog again
+            }
+            
+            if (!password.equals(confirmPassword)) {
+                JOptionPane.showMessageDialog(this,
+                    "Passwords do not match",
+                    "Registration Error",
+                    JOptionPane.ERROR_MESSAGE);
+                return showRegistrationDialog(); // Show dialog again
+            }
+            
+            try {
+                // Check if username already exists
+                if (dbAuth.usernameExists(username)) {
+                    JOptionPane.showMessageDialog(this,
+                        "Username already exists",
+                        "Registration Error",
+                        JOptionPane.ERROR_MESSAGE);
+                    return showRegistrationDialog(); // Show dialog again
+                }
+                
+                // Register new user
+                if (dbAuth.registerUser(username, password)) {
+                    // Registration successful
+                    JOptionPane.showMessageDialog(this,
+                        "Registration successful. Please login.",
+                        "Registration Success",
+                        JOptionPane.INFORMATION_MESSAGE);
+                    return showLoginDialog(); // Show login dialog
+                } else {
+                    // Registration failed
+                    JOptionPane.showMessageDialog(this,
+                        "Registration failed. Please try again.",
+                        "Registration Error",
+                        JOptionPane.ERROR_MESSAGE);
+                    return showRegistrationDialog(); // Show dialog again
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(this,
+                    "Database error: " + e.getMessage(),
+                    "Database Error",
+                    JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        
+        return false; // Cancelled
     }
 
     public static void main(String[] args) {
