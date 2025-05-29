@@ -104,3 +104,21 @@
 2025-05-27 15:57:23 [BROADCAST] [gilang]: anjay
 2025-05-27 15:58:13 [CONNECTION] gilang (/127.0.0.1:55646) telah meninggalkan chat.
 2025-05-27 15:58:13 [BROADCAST] SYSTEM: gilang telah meninggalkan chat.
+2025-05-27 20:28:14 [SERVER] Server dimulai.
+2025-05-27 20:28:40 [CONNECTION] gilang (/127.0.0.1:57855) telah bergabung.
+2025-05-27 20:28:40 [BROADCAST] SYSTEM: gilang telah bergabung dengan chat!
+2025-05-27 20:28:45 [BROADCAST] [gilang]: hai guys
+2025-05-27 20:28:50 [CONNECTION] gilang (/127.0.0.1:57855) telah meninggalkan chat.
+2025-05-27 20:28:50 [BROADCAST] SYSTEM: gilang telah meninggalkan chat.
+2025-05-27 20:29:28 [CONNECTION] gilang (/127.0.0.1:57857) telah bergabung.
+2025-05-27 20:29:28 [BROADCAST] SYSTEM: gilang telah bergabung dengan chat!
+2025-05-27 20:29:32 [BROADCAST] [gilang]: test
+2025-05-28 07:15:29 [BROADCAST] [gilang]: nama saya gilang
+2025-05-28 07:15:36 [BROADCAST] [gilang]: pesan sudah bisa terkirim
+2025-05-29 13:47:25 [SERVER] Server dimulai.
+2025-05-29 13:48:28 [CONNECTION] gilang (/127.0.0.1:62337) telah bergabung.
+2025-05-29 13:48:28 [BROADCAST] SYSTEM: gilang telah bergabung dengan chat!
+2025-05-29 13:48:30 [BROADCAST] [gilang]: test
+2025-05-29 13:48:51 [CONNECTION] gil (/127.0.0.1:62339) telah bergabung.
+2025-05-29 13:48:51 [BROADCAST] SYSTEM: gil telah bergabung dengan chat!
+2025-05-29 13:48:54 [BROADCAST] [gil]: test

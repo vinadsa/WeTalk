@@ -23,7 +23,7 @@ public class ChatClientModel {
     private final PropertyChangeSupport support;
     private volatile boolean connected = false;
 
-    private static final String SERVER_ADDRESS = "localhost";
+    private static final String SERVER_ADDRESS = "129.150.37.67";
     private static final int SERVER_PORT = 1234;
 
     public static final String NEW_MESSAGE_PROPERTY = "newMessage";

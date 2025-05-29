@@ -16,9 +16,9 @@ public class DatabaseAuthenticator {
     private static final Logger LOGGER = Logger.getLogger(DatabaseAuthenticator.class.getName());
     
     // Database connection details
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/we_talk";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "wirapati123";
+    private static final String DB_URL = "jdbc:mysql://129.150.37.67:3306/we_talk";
+    private static final String DB_USER = "gilang";
+    private static final String DB_PASSWORD = "Motorxsr.155";
     
     private static Connection connection;
     private static DatabaseAuthenticator instance;

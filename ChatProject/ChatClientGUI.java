@@ -57,7 +57,7 @@ public class ChatClientGUI extends JFrame {
     private static final Font APP_FONT = new Font("Segoe UI", Font.PLAIN, 13);
     private static final Font HEADER_FONT = new Font("Segoe UI", Font.BOLD, 14);
     
-    private static final String SERVER_ADDRESS = "localhost";
+    private static final String SERVER_ADDRESS = "129.150.37.67";
     private static final int SERVER_PORT = 1234;
 
     // Custom rounded button class
