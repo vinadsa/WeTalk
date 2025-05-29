@@ -1,3 +1,6 @@
-Command buat inisialisasi SERVER: java Server
-Command buat inisialisasi CLIENT: java com.chat.client.view.ChatClientView
-Command buat compile semuanya: javac com/chat/client/model/*.java com/chat/client/view/*.java com/chat/client/controller/*.java Server.java ClientHandler.java
+Command untuk run program:
+Yang bisa buat Kevin: java -cp ".;mysql-connector-java-8.0.33.jar" ChatClientGUI
+Yang bisa buat Gilang: java -cp .;mysql-connector-java-8.0.33.jar ChatClientGUI
+
+
+Jangan Lupa cd ChatProject
